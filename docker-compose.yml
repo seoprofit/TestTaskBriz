@@ -1,0 +1,26 @@
+services:
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: briz_postgresql_login
+      POSTGRES_PASSWORD: briz_postgresql_pass
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  web:
+    depends_on:
+      - db
+    image: tomcat
+    ports:
+      - '8082:8080'
+    environment:
+      POSTGRES_USER: briz_postgresql_log
+      POSTGRES_PASSWORD: briz_postgresql_pass
