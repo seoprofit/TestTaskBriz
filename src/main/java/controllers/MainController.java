@@ -3,21 +3,23 @@ package controllers;
 
 import models.Student;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class MainController {
-@GetMapping(value="/student/{studentId}")
-    public Student getStudent (@PathVariable Integer studentId)
+@GetMapping(value="/students/")
+    public String getStudent (Model model)
 {
     Student student = new Student();
     student.setGender("M");
-    student.setYearOfBirth(studentId);
-    return student;
+    student.setYearOfBirth(1990);
+    return "index";
 }
+
+
+
+
 
 
 }
